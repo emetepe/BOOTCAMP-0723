@@ -13,6 +13,8 @@ let y = 10
 // 1.4 Crea una otra variable 'z' y asignale el valor de 'h' + 'y'.
 let z = h + y
 
+// -----------------------------------
+
 // Iteración #2 Variables avanzadas//
 
 // 2.1 Dado el siguiente javascript, cambia el valor de la propiedad age a 25.
@@ -51,6 +53,8 @@ car2.finalPrice = car2.finalPrice + globalBasePrice;
 console.log(car1.finalPrice);
 console.log(car2.finalPrice);
 
+// -----------------------------------
+
 //Iteración #3: Operadores
 
 // 3.1 Multiplica 10 por 5 y muestra el resultado mediante console.
@@ -84,3 +88,38 @@ let c = 10;
 let m = 5;
 let i = c * m;
 console.log(`El operador es *`)
+
+// -----------------------------------
+
+// Iteración #4: Arrays
+
+// 4.1 Consigue el valor "HULK" del array de avengers y muestralo por consola.
+const avengers1 = ["HULK", "SPIDERMAN", "BLACK PANTHER"];
+valor = avengers1[0];
+console.log(valor)
+
+// 4.2 Cambia el primer elemento de avengers a "IRONMAN"
+const avengers2 = ["HULK", "SPIDERMAN", "BLACK PANTHER"];
+avengers2[0] = "IRONMAN";
+console.log(avengers2)
+
+// 4.3 console numero de elementos en el array usando la propiedad correcta de Array.
+const avengers3 = ["HULK", "SPIDERMAN", "BLACK PANTHER"];
+
+items = avengers3.length;
+console.log(items)
+
+// 4.4 Añade 2 elementos al array: "Morty" y "Summer". 
+// Muestra en consola el último personaje del array
+const rickAndMortyCharacters1 = ["Rick", "Beth", "Jerry"];
+
+// 4.5 Elimina el último elemento del array y muestra el primero y el último por consola.
+const rickAndMortyCharacters2 = ["Rick", "Beth", "Jerry", "Morty", "Summer", "Lapiz Lopez"];
+rickAndMortyCharacters2.pop();
+console.log(rickAndMortyCharacters2[0]);
+console.log(rickAndMortyCharacters2[rickAndMortyCharacters2.length-1]);
+
+// 4.6 Elimina el segundo elemento del array y muestra el array por consola.
+const rickAndMortyCharacters3 = ["Rick", "Beth", "Jerry", "Morty", "Summer", "Lapiz Lopez"];
+rickAndMortyCharacters3.splice(1,1);
+console.log(rickAndMortyCharacters3)
