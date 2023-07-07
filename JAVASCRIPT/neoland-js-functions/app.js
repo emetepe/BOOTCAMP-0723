@@ -6,21 +6,15 @@
 
 // 1.1. Completa la función que tomando dos números como argumento devuelva el más alto.
 
-// ------------- Con arrow function ----------------
+// ------------- Con arrow function y ternario ----------------
 
 const max = (numberOne, numberTwo) => {
-   if (numberOne > numberTwo) {
-       console.log(`El número ${numberOne} es el más alto`);
-   } else if (numberTwo > numberOne) {
-           console.log(`El número ${numberTwo} es el más alto`);
-       } else {console.log("Los dos números son iguales")
-   }
+    numberOne > numberTwo ? console.log(`El número ${numberOne} es el más alto`) : console.log(`El número ${numberTwo} es el más alto`);
 }
 let number1 = 3;
 let number2 = 2;
 
 max(number1,number2);
-
 
 // -----------------------------------------------------------------
 // **Iteración #2: Buscar la palabra más larga**
@@ -31,10 +25,8 @@ en caso de que dos strings tenga la misma longitud deberá devolver el primero.
 Puedes usar este array para probar tu función: */
 
 const avengers = ['Hulk', 'Thor', 'IronMan', 'Captain A.', 'Spiderman', 'Captain M.'];
-
-// ---- Con arrow function y ternario ----------------
-
-let avenger = avengers.reduce((acc, val) => acc.length > val.length ? acc : val, '');
+// ---- Con arrow function, reduce y ternario ----------------
+const avenger = avengers.reduce((acc, val) => acc.length > val.length ? acc : val, '');
 
 console.log(avenger);
 
@@ -77,9 +69,15 @@ console.log(avg.toFixed(2))
 contrario cuente la longitud del string y lo sume. Puedes usar este array para probar tu función: */
 
 const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];
-function averageWord(param) {
-  // insert code
-}
+let sum = 0;
+
+const averageWord = (array) => {
+    for (let i = 0; i < array.length; i++) {
+        typeof(array[i]) == "number" ? sum += array[i] : sum += array[i].length;
+        }
+        console.log(sum)
+    }
+averageWord(mixedElements)
 
 // -----------------------------------------------------------------
 // **Iteración #6: Valores únicos**
@@ -101,10 +99,16 @@ const duplicates = [
     'onion rings',
     'pasta',
     'soda'
-  ];
-  function removeDuplicates(param) {
-    // insert code
-  }
+];
+
+const unique = duplicates.reduce((acc,element)=> {
+    if(!acc.includes(element)) {
+        acc.push(element);
+    }
+    return acc;
+},[])
+
+console.log(unique);
 
 // -----------------------------------------------------------------
 //  **Iteración #7: Buscador de nombres**
