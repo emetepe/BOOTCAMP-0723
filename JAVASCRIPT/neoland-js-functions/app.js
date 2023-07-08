@@ -132,9 +132,12 @@ dentro de dicho array - comprueba si existe el elemento, en caso que existan nos
     'Jessica',
     'Marc'
   ];
-  function finderName(param) {
-    // insert code
-  }
+
+const finderName = (array, name) => {
+    array.filter(name => name ) ? console.log("true") : console.log("false")
+}
+
+finderName(nameFinder,"Clint") 
 
 // -----------------------------------------------------------------
 // Iteration #8: Contador de repeticiones
