@@ -8,6 +8,16 @@
 que incluyan la palabra "Camiseta". Usa la función .includes de javascript. */
 const products = ['Camiseta de Pokemon', 'Pantalón coquinero', 'Gorra de gansta', 'Camiseta de Basket', 'Cinrurón de Orión', 'AC/DC Camiseta']
 
+// --------- CON FOR OF --------
+for (const product of products) {
+    (product.includes("Camiseta")) ? console.log(`${product}`) : "";
+}
+
+// ---------- CON FOREACH -------
+products.forEach((product,index,fullObject) => {
+    product.includes("Camiseta") ? console.log(`${product}`) : "";
+})
+
 // -----------------------------------------------------------------
 // ** Iteración #2: Condicionales avanzados **
 // -----------------------------------------------------------------
