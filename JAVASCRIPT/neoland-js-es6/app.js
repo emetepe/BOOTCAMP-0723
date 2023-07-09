@@ -58,7 +58,7 @@ const animalFunction = () => {
     return {name: 'Bengal Tiger', race: 'Tiger'}
 };
 
-let [nombre, raza] = animalFunction();
+let {nombre, raza} = animalFunction();
 console.log(nombre);
 console.log(raza);
 
@@ -123,8 +123,11 @@ const users = [
 	{id:4, name: 'Amanda'}
 ];
 
+const names = users.map(users => users.name);
+console.log(names);
+
 /* 4.2 Dado el siguiente array, devuelve una lista que contenga los valores de la propiedad 
-.name y cambia el nombre a 'Anacleto' en caso de que empiece por 'A'. *//* 
+.name y cambia el nombre a 'Anacleto' en caso de que empiece por 'A'. */ 
 const users = [
 	{id: 1, name: 'Abel'},
 	{id:2, name: 'Julia'},
@@ -132,7 +135,13 @@ const users = [
 	{id:4, name: 'Amanda'}
 ];
 
-4.3 Dado el siguiente array, devuelve una lista que contenga los valores de la propiedad .name 
+const names = users.map(users => users.name);
+for (element in names) {
+    names[element].startsWith("A") && (names[element] = "Anacleto")
+    }
+console.log(names);
+
+/* 4.3 Dado el siguiente array, devuelve una lista que contenga los valores de la propiedad .name 
 y añade al valor de .name el string ' (Visitado)' cuando el valor de la propiedad isVisited = true. */
 const cities = [
 	{isVisited:true, name: 'Tokyo'}, 
@@ -140,7 +149,11 @@ const cities = [
 	{isVisited:true, name: 'Amsterdam'}, 
 	{isVisited:false, name: 'Seul'}
 ];
-
+for (city in cities) {
+    cities[city].isVisited && (cities[city].name = cities[city].name.concat(" (Visitado)"));
+}
+const newCities = cities.map(cities => cities.name);
+console.log(newCities);
 
 // -----------------------------------------------------------------
 // ** Iteración #5: Filter **
