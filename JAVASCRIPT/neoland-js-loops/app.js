@@ -35,6 +35,16 @@ const alumns = [
 	{name: 'Raquel Benito', T1: true, T2: true, T3: true}
 ]
 
+alumns.forEach((alumn) => {
+    let approvedQuarters = 0;
+    isApproved = false;
+    for (const valor in alumn) {
+        alumn[valor] == true && approvedQuarters++;
+        approvedQuarters >= 2 ? alumn.isApproved = true : alumn.isApproved = false;
+    }
+}
+);
+console.log(alumns)
 
 // -----------------------------------------------------------------
 // ** Iteración #3: Probando For...of **
@@ -44,6 +54,9 @@ const alumns = [
 ***console.log*** sus valores. Puedes usar este array:. */
 const placesToTravel = ['Japon', 'Venecia', 'Murcia', 'Santander', 'Filipinas', 'Madagascar']
 
+for (place of placesToTravel) {
+    console.log(place)
+}
 
 // -----------------------------------------------------------------
 // ** Iteración #4: Probando For...in **
@@ -57,7 +70,9 @@ const alien = {
     weight: '259kg'
 }
 
-
+for (clave in alien) {
+    console.log(`El alienígena tiene la clave ${clave} con valor: ${alien[clave]}`)
+}
 // -----------------------------------------------------------------
 // ** Iteración #5: Probando For **
 // -----------------------------------------------------------------
@@ -66,7 +81,11 @@ const alien = {
 tengan el id 11 y 40. Imprime en un console log el array. Puedes usar este array */
 const placesToTravel = [{id: 5, name: 'Japan'}, {id: 11, name: 'Venecia'}, {id: 23, name: 'Murcia'}, {id: 40, name: 'Santander'}, {id: 44, name: 'Filipinas'}, {id: 59, name: 'Madagascar'}]
 
-
+for (i = 0; i < placesToTravel.length; i++ ) {
+    placesToTravel[i].id == 5 && placesToTravel.splice(i,1);
+    placesToTravel[i].id == 11 && placesToTravel.splice(i,1);
+}
+console.log(placesToTravel)
 
 // -----------------------------------------------------------------
 // ** Iteración #6: Mixed For...of e includes **
@@ -82,6 +101,10 @@ const toys = [
     {id: 40, name: 'El gato felix'}
 ]
 
+for (i = 0; i < toys.length; i++ ) {
+    toys[i].name.includes("gato") && toys.splice(i,1);
+}
+console.log(toys)
 
 // -----------------------------------------------------------------
 // ** Iteración #7: For...of avanzado **
@@ -97,3 +120,7 @@ const toys = [
 	{id: 40, name: 'El gato con Guantes', sellCount: 8},
 	{id: 40, name: 'El gato felix', sellCount: 35}
 ]
+for (i = 0; i < toys.length; i++ ) {
+    toys[i].sellCount > 15 && popularToys.push(toys[i]);
+}
+console.log(popularToys)
