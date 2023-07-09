@@ -163,9 +163,15 @@ console.log(newCities);
 con los valores que sean mayor que 18 */
 const ages = [22, 14, 24, 55, 65, 21, 12, 13, 90];
 
+const higherAges = ages.filter(age => age > 18 )
+console.log(higherAges)
+
 /* 5.2 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
 con los valores que sean par. */
 const ages = [22, 14, 24, 55, 65, 21, 12, 13, 90];
+
+const evenAges = ages.filter(age => age % 2 == 0 )
+console.log(evenAges)
 
 /* 5.3 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
 con los streamers que tengan el gameMorePlayed = 'League of Legends'. */
@@ -176,6 +182,9 @@ const streamers = [
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
 
+const legendsStreamers = streamers.filter(streamer => streamer.gameMorePlayed == "League of Legends");
+console.log(legendsStreamers);
+
 /* 5.4 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
 con los streamers que incluyan el caracter 'u' en su propiedad .name. Recomendamos 
 usar la funcion .includes() para la comprobación. */
@@ -185,12 +194,19 @@ const streamers = [
 	{name: 'Reven', age: 43, gameMorePlayed: 'League of Legends'},
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
+const uStreamers = streamers.filter(streamer => streamer.name.includes("u"));
+console.log(uStreamers);
 
 /* 5.5 utiliza .filter() para generar un nuevo array con los streamers que incluyan 
 el caracter 'Legends' en su propiedad .gameMorePlayed. Recomendamos usar la funcion 
 .includes() para la comprobación. Además, pon el valor de la propiedad .gameMorePlayed 
 a MAYUSCULAS cuando .age sea mayor que 35. */
 
+const legendsIncludedStreamers = streamers.filter(streamer => streamer.gameMorePlayed.includes("Legends"));
+for (streamer in legendsIncludedStreamers) {
+    legendsIncludedStreamers[streamer].age > 26 && (legendsIncludedStreamers[streamer].gameMorePlayed = legendsIncludedStreamers[streamer].gameMorePlayed.toUpperCase());
+}
+console.log(legendsIncludedStreamers);
 
 /* 5.6 Dado el siguiente html y javascript, utiliza .filter() para mostrar por consola 
 los streamers que incluyan la palabra introducida en el input. De esta forma, si 
@@ -250,12 +266,18 @@ const streamers = [
 // 6.1 Dado el siguiente array, usa .find() para econtrar el número 100.
 const numbers = [32, 21, 63, 95, 100, 67, 43];
 
+const findHundred = numbers.find(number => number === 100)
+console.log(findHundred)
+
 // 6.2 Dado el siguiente array, usa .find() para econtrar la pelicula del año 2010.
 const movies = [
 	{title: 'Madagascar', stars: 4.5, date: 2015},
 	{title: 'Origen', stars: 5, date: 2010},
 	{title: 'Your Name', stars: 5, date: 2016}
 ];
+
+const findMovie = movies.find(movie => movie.date === 2010)
+console.log(findMovie)
 
 /* 6.3 Dado el siguiente javascript, usa .find() para econtrar el alien de nombre 
 'Cucushumushu' y la mutación 'Porompompero'. Una vez que los encuentres, usa 
@@ -271,7 +293,12 @@ const mutations = [
 	{name: 'Fly me to the moon', description: 'Permite volar, solo y exclusivamente a la luna'},
 	{name: 'Andando que es gerundio', description: 'Invoca a un señor mayor como Personal Trainer'}
 ];
+const findAlien = aliens.find(alien => alien.name === "Cucushumushu");
+const findMutation = mutations.find(mutation => mutation.name === "Porompompero");
+findAlien.mutation = "";
 
+const fusionado = {...findAlien, ...findMutation};
+console.log(fusionado);
 
 // -----------------------------------------------------------------
 // ** Iteración #7: Reduce **
@@ -292,12 +319,18 @@ const exams = [
     {name: 'Robert Kiyosaki', score: 2},
     {name: 'Keanu Reeves', score: 10}
 ];
+const totalScore = exams.reduce((acc, singleScore) => acc + singleScore.score, 0);
+console.log(totalScore)
 
 /* 7.2 Dado el mismo array, haz una suma de todos las notas de los examenes de los 
 alumnos que esten aprobados usando la función .reduce(). */
+const totalScore = exams.reduce((acc, singleScore) => singleScore.score >= 5 ? acc + singleScore.score : acc, 0);
+console.log(totalScore)
 
 // 7.3 Dado el mismo array, haz la media de las notas de todos los examenes .reduce().
-
+const totalScore = exams.reduce((acc, singleScore) => acc + singleScore.score, 0);
+let avgScore = totalScore / exams.length;
+console.log(avgScore)
 
 // -----------------------------------------------------------------
 // ** Iteración #8: Bonus **
