@@ -349,3 +349,10 @@ const videogames = [
     {name: 'Genshin Impact', genders: ['RPG', 'Aventura'], score: 7.5},
     {name: 'Legend of Zelda: Breath of the wild', genders: ['RPG', 'La cosa más puto bonita que he visto nunca'], score: 10},
 ]
+
+// let filteredVideogames = videogames.filter(videogame => videogames[videogame].genders[videogame] == "RPG")
+// console.log(filteredVideogames)
+
+const totalScore = videogames.reduce((acc, singleScore) => acc + singleScore.score, 0);
+let avgScore = totalScore / videogames.length;
+console.log(avgScore)
