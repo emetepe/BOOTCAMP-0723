@@ -1,4 +1,6 @@
-// Ejercicios JS functions
+// ----------------------------------------------------------------------
+// Neoland JavaScript Functions - Cuaderno 2 - Marta Pérez Romero
+// ----------------------------------------------------------------------
 
 // -----------------------------------------------------------------
 // **Iteración #1: Buscar el máximo**
@@ -61,6 +63,16 @@ for (let i = 0; i < numbers.length; i++) {
 let avg = (Math.round(sum/numbers.length));
 console.log(avg.toFixed(2))
 
+// ----- Con for in ---------
+let sum = 0;
+
+for (number in numbers) {
+    sum += numbers[number]
+}
+
+let avg = (Math.round(sum/numbers.length));
+console.log(avg.toFixed(2))
+
 // -----------------------------------------------------------------
 // **Iteración #5: Calcular promedio de strings**
 // -----------------------------------------------------------------
@@ -72,11 +84,13 @@ const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];
 let sum = 0;
 
 const averageWord = (array) => {
-    for (let i = 0; i < array.length; i++) {
-        typeof(array[i]) == "number" ? sum += array[i] : sum += array[i].length;
-        }
-        console.log(sum)
+    // Usamos un for in
+    for (element in mixedElements) {
+        // Usamos un ternario
+        typeof(array[element]) == "number" ? sum += array[element] : sum += array[element].length;
     }
+    console.log(sum)
+}
 averageWord(mixedElements)
 
 // -----------------------------------------------------------------
@@ -102,10 +116,10 @@ const duplicates = [
 ];
 
 const unique = duplicates.reduce((acc,element)=> {
-    if(!acc.includes(element)) {
-        acc.push(element);
-    }
-    return acc;
+    // Con un "ternario reducido"
+    // Solo si la palabra no está ya en el array, la metemos. Si está, no hacemos nada
+    (!acc.includes(element)) && acc.push(element)
+        return acc;
 },[])
 
 console.log(unique);
@@ -134,6 +148,7 @@ dentro de dicho array - comprueba si existe el elemento, en caso que existan nos
   ];
 
 const finderName = (array, name) => {
+    // Buscamos el nombre en el array, si está mostramos "true", si no, "false"
     array.filter(name => name ) ? console.log("true") : console.log("false")
 }
 
@@ -158,6 +173,25 @@ const counterWords = [
     'upgrade',
     'code'
   ];
-  function repeatCounter(param) {
-    // insert code
-  }
+
+const repeatCounter = (param) => {
+    // Creamos un nuevo array donde meteremos las palabras únicas
+    const finalArray = [];
+    // Usamos forEach para recorrerlo y comparar palabras, y actualizamos un contador en caso de que la palabra se vaya repitiendo
+    param.forEach((word) => {
+      let acc = 0;
+      param.forEach((word2) => {
+        word2 === word && acc++;
+});
+// Con some obtenemos true si la palabra se repite, y no la meteríamos en el array final
+// Si no se repite la meteríamos con el push (restamos 1 para ver las repeticiones, no las apariciones)
+finalArray.some((i) => i.name === word) === false && finalArray.push({ name: word, acc: acc - 1 });});
+/* Mostramos resultados recorriendo el array final con forEach.
+Si el acumulador es 0, que la palabra es única, aparece una sola vez.
+Si no, mostramos las veces que se repite*/ 
+finalArray.forEach((word) => {
+    console.log(`La palabra ${word.name} ${word.acc === 0 ? "es única." : word.acc >= 1 && "se repite " + word.acc + " vez/veces."} `
+    );
+});
+};
+repeatCounter(counterWords);
