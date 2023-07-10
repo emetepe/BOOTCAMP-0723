@@ -1,4 +1,6 @@
-// Neoland JavaScript Basic algorithms
+// ----------------------------------------------------------------------
+// Neoland JavaScript Basic algorithms - Cuaderno 1 - Marta Pérez Romero
+// ----------------------------------------------------------------------
 
 // Iteración #1: Variables //
 
@@ -81,13 +83,13 @@ console.log(`El resto de x entre y es igual a ${resto}`);
 teniendo dos variables p = 10 y j = 5.*/
 let p = 10;
 let j = 5;
-let o = p + j;
+p += j;
 
 /* 3.5 Usa el correcto operador de asignación que resultará en i = 50,
 teniendo dos variables c = 10 y m = 5. */
 let c = 10;
 let m = 5;
-let i = c * m;
+c *= m;
 
 // -----------------------------------
 
@@ -177,9 +179,7 @@ for (let i=0; i<=9; i++){
 /* 6.2 Crea un bucle for que vaya desde 0 a 9 y muestralo por consola solo 
 cuando el resto del numero dividido entre 2 sea 0. */
 for (let i=0; i<=9; i++){
-    if (i % 2 == 0) {
-        console.log(i);
-    }
+    (i % 2 == 0) && console.log(i);
 }
 
 /* 6.3 Crea un bucle para conseguir dormir contando ovejas. 
@@ -187,9 +187,5 @@ Este bucle tiene que dar 10 vueltas, es decir, 10 console.log.
 Muestra por consola un mensaje diciendo 'Intentando dormir 🐑' en cada vuelta del bucle 
 y cambia el mensaje en la décima vuelta a 'Dormido!'. */
 for (let i=0; i<=9; i++){
-    if (i < 9) {
-        console.log("Intentando dormir 🐑");
-    } else {
-        console.log("Dormido!")
-    }
+    (i < 9) ? console.log("Intentando dormir 🐑") : console.log("Dormido!");
 }
