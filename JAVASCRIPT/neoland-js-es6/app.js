@@ -1,4 +1,6 @@
-// Ejercicios JS ES6
+// ----------------------------------------------------------------------
+// Neoland JavaScript ES6 - Cuaderno 5 - Marta Pérez Romero
+// ----------------------------------------------------------------------
 
 // -----------------------------------------------------------------
 // ** Iteración #1: Arrows **
@@ -8,9 +10,10 @@
 que por defecto el valor de a = 10 y de b = 5. Haz que la función muestre 
 por consola la suma de los dos parametros. */
 
+// Declaramos variables con el valor por defecto
 let a = 10;
 let b = 5;
-
+// Creamos la función arrow con los parámetros y la operación suma
 const sum = (n1, n2) => {
     return n1 + n2
 }
@@ -33,9 +36,9 @@ del objeto usando object destructuring e imprimelas por consola. Cuidado,
 no hace falta hacer destructuring del array, solo del objeto. */
 
 const game = {title: 'The last us 2', gender: ['action', 'zombie', 'survival'], year: 2020}
-
+// Creamos las tres variables y las igualamos al objeto game
 let {title, gender, year} = game;
-
+// Imprimimos cada una por separado para comprobar el destructuring del objeto
 console.log(title);
 console.log(gender);
 console.log(year);
@@ -45,8 +48,9 @@ llamadas fruit1, fruit2 y fruit3, con los valores del array. Posteriormente
 imprimelo por consola. */
 
 const fruits = ['Banana', 'Strawberry', 'Orange'];
-
+// Creamos las tres variables y las igualamos al array game
 let [fruit1, fruit2, fruit3] = fruits;
+// Imprimimos cada una por separado para comprobar el destructuring del array
 console.log(fruit1);
 console.log(fruit2);
 console.log(fruit3);
@@ -57,10 +61,11 @@ variables igualandolo a la función e imprimiendolo por consola. */
 const animalFunction = () => {
     return {name: 'Bengal Tiger', race: 'Tiger'}
 };
-
+// Creamos las dos variables y la igualamos a la función
 let {nombre, raza} = animalFunction();
-console.log(nombre);
-console.log(raza);
+// Mostramos resultados en una frase con un template
+console.log(`El ${nombre} pertenece a la raza ${race}`)
+
 
 /* 2.4 En base al siguiente javascript, usa destructuring para crear las 
 variables name y itv con sus respectivos valores. Posteriormente crea 
@@ -68,11 +73,11 @@ variables name y itv con sus respectivos valores. Posteriormente crea
 y comprueba que todo esta bien imprimiendolo. */
 
 const car = {name: 'Mazda 6', itv: [2015, 2011, 2020] }
-
+// Creamos las variables name e itv, las igualamos al objeto y las imprimimos
 let {name, itv} = car;
 console.log(name);
 console.log(itv);
-
+// Creamos las tres variables, las igualamos al array y las imprimimos
 let [year1, year2, year3] = itv;
 console.log(year1);
 console.log(year2);
@@ -84,32 +89,38 @@ console.log(year3);
 
 // 3.1 Dado el siguiente array, crea una copia usando spread operators.
 const pointsList = [32, 54, 21, 64, 75, 43]
-
+// Simplemente copiamos con ... y el array que queremos copiar
 const pointsListCopy = [...pointsList];
 console.log(pointsListCopy);
 
 // 3.2 Dado el siguiente objeto, crea una copia usando spread operators.
 const toy = {name: 'Bus laiyiar', date: '20-30-1995', color: 'multicolor'};
-
+// Hacemos lo mismo que en el caso anterior pero con llaves, porque es un objeto
 const toyCopy = {...toy};
 console.log(toyCopy);
 
 //3.3 Dado los siguientes arrays, crea un nuevo array juntandolos usando spread operatos.
 const pointsList = [32, 54, 21, 64, 75, 43];
 const pointsLis2 = [54,87,99,65,32];
-
-const pointListsJoined = {...pointsList, ...pointsLis2};
+// Unimos los arrays colocando ... delante de cada uno, separados por coma
+const pointListsJoined = [...pointsList, ...pointsLis2];
 
 // 3.4 Dado los siguientes objetos. Crea un nuevo objeto fusionando los dos con spread operators.
 const toy = {name: 'Bus laiyiar', date: '20-30-1995', color: 'multicolor'};
 const toyUpdate = {lights: 'rgb', power: ['Volar like a dragon', 'MoonWalk']}
+// Hacemos lo mismo que en el caso anterior pero con llaves por ser objetos
+const toysTogether = { ...toy2, ...toy2Update };
+console.log(toysTogether);
 
 /* 3.5 Dado el siguiente array. Crear una copia de él eliminando la posición 2 
 pero sin editar el array inicial. De nuevo, usando spread operatos. */
 const colors = ['rojo', 'azul', 'amarillo', 'verde', 'naranja'];
-
-const toysTogether = {...toy, ...toyUpdate};
-console.log(toysTogether);
+// Creamos una copia de colors con spread operator y corchetes por ser array
+const colorsCopy = [...colors];
+// Eliminamos con splice la posición 2, 1 solo elementos
+copiaColors.splice(2, 1);
+// Imprimimos por pantalla el array resultante
+console.log(colorsCopy);
 
 // -----------------------------------------------------------------
 // ** Iteración #4: Map **
@@ -122,7 +133,7 @@ const users = [
 	{id:3, name: 'Pedro'},
 	{id:4, name: 'Amanda'}
 ];
-
+// Hacemos el map sobre el array users quedándonos con el nombre
 const names = users.map(users => users.name);
 console.log(names);
 
@@ -134,11 +145,13 @@ const users = [
 	{id:3, name: 'Pedro'},
 	{id:4, name: 'Amanda'}
 ];
-
+// Hacemos lo mismo que en el caso anterior pero necesitamos un bucle para recorrer los objetos
+// Añadimos la condición para que si empieza por A (con .startsWith(), lo cambie por Anacleto)
 const names = users.map(users => users.name);
 for (element in names) {
     names[element].startsWith("A") && (names[element] = "Anacleto")
     }
+// Mostramos por pantalla el resultado
 console.log(names);
 
 /* 4.3 Dado el siguiente array, devuelve una lista que contenga los valores de la propiedad .name 
@@ -149,9 +162,11 @@ const cities = [
 	{isVisited:true, name: 'Amsterdam'}, 
 	{isVisited:false, name: 'Seul'}
 ];
+// Recorremos cities y si se ha visitado concatenamos (Visitado) en el propio array
 for (city in cities) {
     cities[city].isVisited && (cities[city].name = cities[city].name.concat(" (Visitado)"));
 }
+// Hacemos el map sobre el array modiicado, que ya incluye (Visitado) e imprimimos por pantalla
 const newCities = cities.map(cities => cities.name);
 console.log(newCities);
 
@@ -162,15 +177,17 @@ console.log(newCities);
 /* 5.1 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
 con los valores que sean mayor que 18 */
 const ages = [22, 14, 24, 55, 65, 21, 12, 13, 90];
-
+// Filtramos añadiendo la condición con arrow function
 const higherAges = ages.filter(age => age > 18 )
+// Mostramos array resultante
 console.log(higherAges)
 
 /* 5.2 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
 con los valores que sean par. */
 const ages = [22, 14, 24, 55, 65, 21, 12, 13, 90];
-
+// Filtramos añadiendo la condición con arrow function
 const evenAges = ages.filter(age => age % 2 == 0 )
+// Mostramos array resultante
 console.log(evenAges)
 
 /* 5.3 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
@@ -181,8 +198,9 @@ const streamers = [
 	{name: 'Reven', age: 43, gameMorePlayed: 'League of Legends'},
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
-
+// Filtramos añadiendo la condición con arrow function
 const legendsStreamers = streamers.filter(streamer => streamer.gameMorePlayed == "League of Legends");
+// Mostramos array resultante
 console.log(legendsStreamers);
 
 /* 5.4 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
@@ -194,7 +212,9 @@ const streamers = [
 	{name: 'Reven', age: 43, gameMorePlayed: 'League of Legends'},
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
+// Filtramos añadiendo la condición con arrow function e .includes()
 const uStreamers = streamers.filter(streamer => streamer.name.includes("u"));
+// Mostramos array resultante
 console.log(uStreamers);
 
 /* 5.5 utiliza .filter() para generar un nuevo array con los streamers que incluyan 
@@ -202,10 +222,13 @@ el caracter 'Legends' en su propiedad .gameMorePlayed. Recomendamos usar la func
 .includes() para la comprobación. Además, pon el valor de la propiedad .gameMorePlayed 
 a MAYUSCULAS cuando .age sea mayor que 35. */
 
+// Filtramos el primer array y lo incluimos en el nuevo si incluye la palabra pedida
 const legendsIncludedStreamers = streamers.filter(streamer => streamer.gameMorePlayed.includes("Legends"));
+// Recorremos el nuevo array con for...in y si se cumple la condición añadimos la cadena en mayúsculas
 for (streamer in legendsIncludedStreamers) {
     legendsIncludedStreamers[streamer].age > 26 && (legendsIncludedStreamers[streamer].gameMorePlayed = legendsIncludedStreamers[streamer].gameMorePlayed.toUpperCase());
 }
+// Mostramos array resultante
 console.log(legendsIncludedStreamers);
 
 /* 5.6 Dado el siguiente html y javascript, utiliza .filter() para mostrar por consola 
@@ -218,6 +241,14 @@ const streamers = [
 	{name: 'Reven', age: 43, gameMorePlayed: 'League of Legends'},
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
+
+// Creamos input con función getElementById de document
+const input = document.getElementById("inputIndex");
+// Creamos función con el nombre que aparece en el input del html
+const toFilterStreamers = () => {
+// Filtramos el array con lo que se introduce por teclado con .includes y mostramos en tiempo real lo que se busca
+  streamers.filter((text) => text.nameNew.includes(input.value) && console.log(text.nameNew));
+};
 
 /* <!doctype html>
 <html lang="en">
@@ -243,6 +274,13 @@ const streamers = [
 	{name: 'Reven', age: 43, gameMorePlayed: 'League of Legends'},
 	{name: 'AuronPlay', age: 33, gameMorePlayed: 'Among Us'}
 ];
+// Creamos input con función getElementById de document
+const input = document.getElementById("inputIndex1");
+// Creamos función con el nombre que aparece en el input del html
+const toShowFilterStreamers = () => {
+	// Filtramos el array con lo que se introduce por teclado con .includes y mostramos lo que se busca
+	streamers.filter((text) => text.nameNew.includes(input.value) && console.log(text.nameNew));
+};
 
 /* <!doctype html>
 <html lang="en">
@@ -265,7 +303,7 @@ const streamers = [
 
 // 6.1 Dado el siguiente array, usa .find() para econtrar el número 100.
 const numbers = [32, 21, 63, 95, 100, 67, 43];
-
+// Creamos findHundred con la condición dada y mostramos por pantalla
 const findHundred = numbers.find(number => number === 100)
 console.log(findHundred)
 
@@ -275,7 +313,7 @@ const movies = [
 	{title: 'Origen', stars: 5, date: 2010},
 	{title: 'Your Name', stars: 5, date: 2016}
 ];
-
+// Creamos findMovie con la condición dada y mostramos por pantalla
 const findMovie = movies.find(movie => movie.date === 2010)
 console.log(findMovie)
 
@@ -293,10 +331,12 @@ const mutations = [
 	{name: 'Fly me to the moon', description: 'Permite volar, solo y exclusivamente a la luna'},
 	{name: 'Andando que es gerundio', description: 'Invoca a un señor mayor como Personal Trainer'}
 ];
+// Con .find() obtenemos los valores que queremos
 const findAlien = aliens.find(alien => alien.name === "Cucushumushu");
 const findMutation = mutations.find(mutation => mutation.name === "Porompompero");
+// Añadunos nueva propiedad al primer array
 findAlien.mutation = "";
-
+// Fusionamos ambos arrays con spread operator
 const fusionado = {...findAlien, ...findMutation};
 console.log(fusionado);
 
@@ -349,10 +389,10 @@ const videogames = [
     {name: 'Genshin Impact', genders: ['RPG', 'Aventura'], score: 7.5},
     {name: 'Legend of Zelda: Breath of the wild', genders: ['RPG', 'La cosa más puto bonita que he visto nunca'], score: 10},
 ]
-
-// let filteredVideogames = videogames.filter(videogame => videogames[videogame].genders[videogame] == "RPG")
-// console.log(filteredVideogames)
-
-const totalScore = videogames.reduce((acc, singleScore) => acc + singleScore.score, 0);
+// Creamos array filtrado que incluya la condición en la propiedad .genders del array videogames
+const filteredVideogames = videogames.filter((videogame) => videogame.genders.includes("RPG"));
+// Creamos array sobre array anterior usando .reduce para sumar el total de las puntuaciones, partiendo de 0
+const totalScore = filteredVideogames.reduce((acc, videojuego) => acc + videojuego.score,0);
+// Creamos la variable avgScore y mostramos por pantalla la media de las puntuaciones
 let avgScore = totalScore / videogames.length;
-console.log(avgScore)
+console.log(avgScore);
