@@ -1,4 +1,6 @@
-// Ejercicios JS Loops
+// ----------------------------------------------------------------------
+// Neoland JavaScript Loops - Cuaderno 3 - Marta Pérez Romero
+// ----------------------------------------------------------------------
 
 // -----------------------------------------------------------------
 // ** Iteración #1: Usa includes **
@@ -34,11 +36,14 @@ const alumns = [
 	{name: 'Alfredo Blanco', T1: false, T2: false, T3: false},
 	{name: 'Raquel Benito', T1: true, T2: true, T3: true}
 ]
-
+/* Recorremos el array para contar los trimestres aprobados
+   Si son 2 o 3 el alumno ha aprobado y se pone isApproved=true
+   Si son 0 o 1 el alumno no ha aprobado y se pone isApproved=false 
+   Nota: se ha usado la pista del enunciado para meter la nueva propiedad*/
 alumns.forEach((alumn) => {
     let approvedQuarters = 0;
     isApproved = false;
-    for (const valor in alumn) {
+    for (valor in alumn) {
         alumn[valor] == true && approvedQuarters++;
         approvedQuarters >= 2 ? alumn.isApproved = true : alumn.isApproved = false;
     }
@@ -80,10 +85,14 @@ for (clave in alien) {
 /* 5.1. Usa un bucle for para recorrer todos los destinos del array y elimina los elementos que 
 tengan el id 11 y 40. Imprime en un console log el array. Puedes usar este array */
 const placesToTravel = [{id: 5, name: 'Japan'}, {id: 11, name: 'Venecia'}, {id: 23, name: 'Murcia'}, {id: 40, name: 'Santander'}, {id: 44, name: 'Filipinas'}, {id: 59, name: 'Madagascar'}]
-
-for (i = 0; i < placesToTravel.length; i++ ) {
-    placesToTravel[i].id == 5 && placesToTravel.splice(i,1);
-    placesToTravel[i].id == 11 && placesToTravel.splice(i,1);
+// Para recorrer con un for pondríamos lo siguiente:
+// for (i = 0; i < placesToTravel.length; i++ ) {
+//     placesToTravel[i].id == (11 || 40) && placesToTravel.splice(i,1);
+// }
+// Se opta, además, por el uso de for...in por ser más limpio
+// Recorremos el array con un for...in y con un ternario eliminamos 11 y 40 con un splice
+for (place in placesToTravel) {
+    placesToTravel[place].id == (11 || 40) && placesToTravel.splice(place,1);
 }
 console.log(placesToTravel)
 
@@ -100,9 +109,9 @@ const toys = [
     {id: 40, name: 'El gato con Guantes'},
     {id: 40, name: 'El gato felix'}
 ]
-
-for (i = 0; i < toys.length; i++ ) {
-    toys[i].name.includes("gato") && toys.splice(i,1);
+// Recorremos el array con for...of, con includes() comprobamos la condición, si se cumple, eliminamos con un splice
+for (toy of toys) {
+    toy.name.includes("gato") && toys.splice(toys.indexOf(toy),1);
 }
 console.log(toys)
 
@@ -120,7 +129,7 @@ const toys = [
 	{id: 40, name: 'El gato con Guantes', sellCount: 8},
 	{id: 40, name: 'El gato felix', sellCount: 35}
 ]
-for (i = 0; i < toys.length; i++ ) {
-    toys[i].sellCount > 15 && popularToys.push(toys[i]);
-}
+// Con un for..of y un "semiternario" comprobamos condición y añadimos elemento con push
+for (toy of toys) {
+    toy.sellCount > 15 && popularToys.push(toy);
 console.log(popularToys)
