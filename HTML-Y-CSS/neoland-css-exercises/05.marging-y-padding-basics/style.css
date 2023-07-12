@@ -1,0 +1,37 @@
+/* Edita el fichero style.css en las líneas indicadas para conseguir el resultado propuesta en la siguiente imagen. */
+
+/* Formateamos al inicio */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .one {
+    background-color: pink;
+    border: 3px solid black;
+    text-align: center;
+    padding: 32px;
+    margin: 12px;
+  }
+
+  .two {
+    background-color: lightblue;
+    border: 3px solid black;
+    margin-bottom: 48px;
+  }
+
+  .three {
+    background-color: peachpuff;
+    border: 3px solid black;
+    text-align: center;
+    width: 200px;
+    padding: 32px;
+    margin-left: 400px;
+  }
