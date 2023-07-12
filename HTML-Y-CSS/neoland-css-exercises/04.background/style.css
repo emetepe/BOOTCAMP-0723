@@ -1,0 +1,21 @@
+/* Formateamos al inicio */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  h1 {
+    background-color: aquamarine;
+  }
+
+  p {
+    background-color: blue;
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  }
+
+  body {
+    background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
+  }
+
