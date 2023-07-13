@@ -1,0 +1,55 @@
+/* Edita el fichero style.css en las líneas indicadas para conseguir el resultado propuesta en la siguiente imagen. */
+
+/* Formateamos al inicio */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: #eee;
+    font-family: sans-serif;
+  }
+
+  .card {
+    width: 400px;
+    background-color: fff;
+    margin: 16px auto;
+    border: solid 1px black;
+    padding: 8px;
+
+  }
+
+  .title {
+    background-color: #e3f4ff;
+    font-size: 16px;
+    border: solid 1px black;
+    padding: 8 px;
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  .content {
+    background-color: #e3f4ff;
+    border: solid 1px black;
+    padding: 8 px;
+    margin-bottom: 8px;
+  }
+
+  .button-container {
+    background-color: #e3f4ff;
+    border: solid 1px black;
+    padding: 8 px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  button {
+    background-color: white;
+    border: 1px solid  #eee;
+    padding: 8 px;
+    text-align: center;
+  }
+
