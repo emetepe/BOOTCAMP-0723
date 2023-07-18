@@ -3,7 +3,7 @@
 Ex: Input = "hi" --> Output = "Who ate the last cookie? It was Zach! (The reason you return Zach is because the input is a string)
 Note: Make sure you return the correct message with correct spaces and punctuation.*/
     
-function cookie (x) {
+const cookie = (x) => {
     const text = "Who ate the last cookie? It was"
     switch (typeof x) {
         case "string":
