@@ -20,7 +20,7 @@ const cookie = (x) => {
     }
 }
 
-cookie("Roger");
+cookie("Ryan");
 cookie(26);
 cookie(2.3);
 cookie(true);
