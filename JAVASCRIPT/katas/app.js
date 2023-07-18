@@ -12,8 +12,11 @@ const cookie = (x) => {
         case "number":
             console.log(`${text} Monica!`);
             break;
-        default:
+        case "boolean":
             console.log(`${text} the dog!`);
+            break;
+        default:
+            console.log(`${text} another type of element!`);
     }
 }
 
