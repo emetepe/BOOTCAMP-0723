@@ -7,16 +7,13 @@ const cookie = (x) => {
     const text = "Who ate the last cookie? It was"
     switch (typeof x) {
         case "string":
-            console.log(`${text} Zach!`);
+            return(`${text} Zach!`);
             break;
         case "number":
-            console.log(`${text} Monica!`);
-            break;
-        case "boolean":
-            console.log(`${text} the dog!`);
+            return(`${text} Monica!`);
             break;
         default:
-            console.log(`${text} another type of element!`);
+            return(`${text} the dog!`);
     }
 }
 
