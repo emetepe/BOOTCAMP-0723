@@ -27,16 +27,38 @@ Note: Make sure you return the correct message with correct spaces and punctuati
 of the count of occurrences the 2nd argument is found in the first one.
 If no occurrences can be found, a count of 0 should be returned. */
 
-const str_count = (s, c) => {
-    let total = 0;
-    for (let i = 0; i < s.length; i++) {
-            if (s.charAt(i) == c) {
-                total++;
-            }
-    }
-    return total;
+// const str_count = (s, c) => {
+//     let total = 0;
+//     for (let i = 0; i < s.length; i++) {
+//             if (s.charAt(i) == c) {
+//                 total++;
+//             }
+//     }
+//     return total;
+// }
+
+// console.log(str_count("Hello", 'o')); // returns 1
+// console.log(str_count("Hello", 'l')); // returns 2
+// console.log(str_count("", 'z')); // returns 0
+
+// Kata nivel 8 - 20/07/2023
+/* Bob is working as a bus driver. However, he has become extremely popular amongst the city's residents. 
+With so many passengers wanting to get aboard his bus, he sometimes has to face the problem of not enough space 
+left on the bus! He wants you to write a simple program telling him if he will be able to fit all the passengers */
+
+/* You have to write a function that accepts three parameters:
+
+cap is the amount of people the bus can hold excluding the driver.
+on is the number of people on the bus excluding the driver.
+wait is the number of people waiting to get on to the bus excluding the driver.
+If there is enough space, return 0, and if there isn't, return the number of passengers he can't take */
+
+const enough = (cap, on, wait) => {
+    let capacity = cap - on;
+    wait <= capacity ? capacity = 0 : capacity = wait - capacity;
+    return capacity;
 }
 
-console.log(str_count("Hello", 'o')); // returns 1
-console.log(str_count("Hello", 'l')); // returns 2
-console.log(str_count("", 'z')); // returns 0
+console.log(enough(10, 5, 5));
+console.log(enough(100, 60, 50));
+console.log(enough(20, 5, 5));
