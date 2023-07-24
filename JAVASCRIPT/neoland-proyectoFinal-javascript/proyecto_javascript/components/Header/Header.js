@@ -9,7 +9,8 @@ const template = () => `
 <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690020139/logo_uxpmno.svg" alt="Background" class="logo">
 <nav>
     <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690021315/color-wheel_9686678_tbg7ev.png" alt="color_flipper" id="colorFlipper">
-    <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690022488/271890_pv7ag4.png" alt="Dashboard_area" id="dashboard">
+    <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690021808/dashboard-icon-30_ebvjmn.png
+    " alt="Dashboard_area" id="dashboard">
     <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690021055/logout_5855712_rqpno0.png" alt="Logout button" id="logoutButton">
 </nav>
 ` ;

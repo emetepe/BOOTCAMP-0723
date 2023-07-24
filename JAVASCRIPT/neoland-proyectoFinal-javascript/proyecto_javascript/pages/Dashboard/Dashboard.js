@@ -1,29 +1,30 @@
+import { initController } from "../../utils";
 import "./Dashboard.css"
 
 const templateDashboard = () => `
 <div id="containerDashboard">
     <ul>
         <li>
-            <figure>
-                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690041890/Pokemon-Logo-PNG-Photo_b5f6fc.png" alt="Go to Pokemon page">
+            <figure id="navigatePokemon">
+                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690171115/pokemon-symbol-logo-png-31_dmcdps.png" alt="Go to Pokemon page">
                 <h2>P0KEMON</h2>
             </figure>
         </li>
         <li>
             <figure>
-                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690042090/mascot_logo_ubvahm.png" alt="Go to Wacka Topo game">
+                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690171239/3905506_wv6rrq.png" alt="Go to Wacka Topo game">
                 <h2>WACKA TOPO</h2>
             </figure>
         </li>
         <li>
             <figure>
-                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690044171/6168860_mmvonq.png" alt="Go to Memory game">
+                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690170567/219-2197760_brain-training-version-memory-game-icon_iecl0m.png" alt="Go to Memory game">
                 <h2>MEMORY GAME</h2>
             </figure>
         </li>
         <li>
             <figure>
-                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690047367/Tetris-PNG-Image_ap8wzo.png" alt="Go to Tetris game">
+                <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690170837/806099_bsc1md.png" alt="Go to Tetris game">
                 <h2>TETRIS</h2>
             </figure>
         </li>
@@ -38,9 +39,15 @@ const templateDashboard = () => `
 </div>
 `;
 
-
+const addEventListeners = () => {
+    const navigatePokemon = document.getElementById("navigatePokemon");
+    navigatePokemon.addEventListeners("click", ()=>{
+        initController("Pokemon");
+    });
+};
 
 export const printTemplateDashboard = () => {
     document.querySelector("main").innerHTML = templateDashboard();
     document.querySelector("nav").style.display = "flex";
-}
+    addEventListeners();
+};

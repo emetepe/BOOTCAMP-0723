@@ -1,6 +1,5 @@
 import { getUser } from "../global/state/globalState";
-import { Login, printTemplateDashboard } from "../pages";
-
+import { Login, PrintPokemonPage, printTemplateDashboard } from "../pages"; 
 
 
 // CONTROLADOR DE RENDERIZACIÓN EN CADA MOMENTO
@@ -13,7 +12,7 @@ export const initController = (pagesRender) => {
             break;
         
         case "Pokemon":
-            "Pokemon()"
+            PrintPokemonPage();
             break;
 
         case "Dashboard":
@@ -31,6 +30,15 @@ export const initController = (pagesRender) => {
         case "Memory":
             "Memory()"
             break;
+        
+        case "Tetris":
+            "Tetris()"
+            break;
+
+        case "Mastermind":
+            "Mastermind()"
+            break;
+
 
     }
 
