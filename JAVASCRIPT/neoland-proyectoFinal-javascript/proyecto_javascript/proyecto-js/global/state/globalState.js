@@ -1,5 +1,5 @@
 const currentUser = {
-  name: sessionStorage.getItem("currenUser")
+  name: sessionStorage.getItem("currentUser")
     ? sessionStorage.getItem("currentUser")
     : "",
 };
