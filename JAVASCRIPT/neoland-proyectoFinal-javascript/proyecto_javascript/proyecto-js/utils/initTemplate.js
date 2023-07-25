@@ -1,5 +1,5 @@
-import { printTemplateHeader } from "../components";
-import { printTemplateFooter } from "../components";
+import { PrintTemplateHeader } from "../components";
+import { PrintTemplateFooter } from "../components";
 
 export const initTemplate = () => {
   const app = document.getElementById("app");
@@ -13,6 +13,6 @@ export const initTemplate = () => {
   console.log(app);
 
   app.append(header, main, footer);
-  printTemplateHeader();
-  printTemplateFooter();
+  PrintTemplateHeader();
+  PrintTemplateFooter();
 };

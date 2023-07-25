@@ -8,6 +8,7 @@ import "./Header.css";
 const template = () => `
 <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690020139/logo_uxpmno.svg" alt="Background" class="logo">
 <nav>
+    <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690178120/1758458_aoegjg.png" alt="Dark Mode" id="darkMode">
     <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690021315/color-wheel_9686678_tbg7ev.png" alt="color_flipper" id="colorFlipper">
     <img src="https://res.cloudinary.com/dhninncj6/image/upload/v1690021808/dashboard-icon-30_ebvjmn.png
     " alt="Dashboard_area" id="dashboard">
@@ -46,7 +47,7 @@ const addListeners = () => {
 };
 
 // Pintamos
-export const printTemplateHeader = () => {
+export const PrintTemplateHeader = () => {
   document.querySelector("header").innerHTML = template();
   addListeners();
 };
