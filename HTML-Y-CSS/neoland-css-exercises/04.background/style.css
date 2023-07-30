@@ -1,5 +1,3 @@
-/* Dado el siguiente HTML, aplicar los distintos fondos y colores proporcionados para que se refleje todo de manera similar al resultado provisto.*/
-
 /* Formateamos al inicio */
 * {
     margin: 0;
@@ -8,16 +6,17 @@
     font-family: "Poppins", sans-serif;
   }
 
-  h1 {
-    background-color: aquamarine;
-  }
-
-  p {
-    background-color: blue;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
-  }
-
   body {
     background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
   }
-
+  
+  h1 {
+    background-color: aquamarine;
+  }
+  
+  .content {
+    background-color: blue;
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+    background-size: 50%;
+    background-attachment: fixed;
+  }

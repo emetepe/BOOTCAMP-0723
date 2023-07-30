@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  background: #aaa;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  width: 480px;
+  box-shadow: 2px 4px 16px rgba(0,0,0,.2);
+  padding: 10px;
+}
+
+.icon {
+  color: black;
+  font-size: 26px;
+  font-weight: 700;
+  background: lavender;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid black 1px;
+  border-radius: 50%;
+}
+
+.close-button {
+  background: #eee;
+  border: solid black 1px;
+  border-radius: 50%;
+  color: black;
+  font-weight: 400;
+  font-size: 16px;
+  height: 42px;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 5px;
+}
+
+button.continue {
+  background: royalblue;
+  border: 1px solid black;
+  color: white;
+}
+
+button.cancel {
+  background: white;
+  border: 1px solid black;
+  color: royalblue;
+}
