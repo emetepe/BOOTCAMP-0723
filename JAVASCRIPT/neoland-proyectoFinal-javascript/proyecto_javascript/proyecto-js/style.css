@@ -33,10 +33,7 @@
       @media (max-height: 855px) {
         flex-direction: row;
       }
-      @media (max-width: 450px) {
-        max-height: 300px;
-        max-width: 300px;
-      }
+      
     }
       & .containerWording {
         background-color: #7b339b;
