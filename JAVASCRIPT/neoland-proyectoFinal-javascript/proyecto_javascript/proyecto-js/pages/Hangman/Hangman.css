@@ -1,0 +1,44 @@
+#containerHangman {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-height: 855px) {
+    flex-direction: row;
+  }
+
+ & #boardHangman{
+    background-color: rgb(58, 129, 0);
+    border-radius: 20px;
+    width: 55vw;
+    height: 60vh;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    & #msg {
+      color: white;
+    }
+
+    & button {
+      background-color: #7b339b;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      display: block;
+      width: 80%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-family: inherit;
+      padding: 1.1rem;
+      justify-content: center;
+      align-items: center;
+    }
+}
+}
+
+

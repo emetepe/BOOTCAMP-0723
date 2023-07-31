@@ -1,0 +1,131 @@
+.boadTTT {
+    background-color: lightskyblue;
+    border-radius: 20px;
+    width: 55vw;
+    height: 60vh;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+
+    @media (max-width: 450px) {
+        max-height: 200px;
+        max-width: 200px;
+      }
+
+}
+
+.grid-cell {
+    border: 3px solid #7b339b;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    @media (max-width: 400px) {
+        max-height: 200px;
+        max-width: 200px;
+      }
+   
+}
+
+.grid-cell:not(.disabled):hover {
+    background: #eee;
+}
+
+.grid-cell:nth-child(-n + 3) {
+    border-top: none;
+}
+
+.grid-cell:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.grid-cell:nth-child(3n + 3) {
+    border-right: none;
+}
+
+.grid-cell:nth-last-of-type(-n + 3) {
+    border-bottom: none;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+.x::after {
+    content: '❌';
+}
+
+.o::after {
+    content: '⭕';
+}
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgb(0 0 0 / 50%) 0 0 0 9999px;
+}
+
+.game-over-text {
+    position: absolute;
+    top: -350%;
+    font-size: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    transform: translateX(-30%);
+}
+
+.btn-start {
+    position:relative;
+    top: -400%;
+}
+
+.visible {
+    display: block;
+}
+
+#btn_restart {
+    background-color: #7b339b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.1rem;
+}
+
+#resetButton {
+    background-color: #7b339b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 1.1rem;
+  }
+
+  .containerEnd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    gap: 2rem;
+  }

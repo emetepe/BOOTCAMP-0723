@@ -9,6 +9,8 @@ export const CardsPokemons = (data) => {
     <figure class=${classCustomType}>
       <img src=${pokemon.image} alt=${pokemon.name} />
       <h2>${pokemon.name}</h2>
+      <h2>Weight: ${pokemon.weight}</h2>
+      <h2>Height: ${pokemon.height}</h2>
     </figure>`;
     document.getElementById("galleryPokemon").innerHTML += templateFigure;
   });

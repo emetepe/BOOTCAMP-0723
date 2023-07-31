@@ -1,3 +1,5 @@
+// Funcionalidad para modificar el color de la página de forma aleatoria
+
 export const changeColorRGB = () => {
   const randomNumber = (min, max) => {
     min = Math.ceil(min);
@@ -12,3 +14,6 @@ export const changeColorRGB = () => {
   const color = `rgb(${R},${G},${B}`;
   return color;
 };
+
+// Mejora 1: botón para hacer reset y volver al color por defecto
+

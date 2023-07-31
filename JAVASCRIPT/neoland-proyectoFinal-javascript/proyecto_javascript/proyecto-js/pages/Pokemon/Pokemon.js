@@ -6,6 +6,7 @@ import {
 } from "../../components";
 import { Paginacion, dataPokemon, filterPokemon } from "../../utils";
 import "./Pokemon.css";
+
 const template = () => `
   <div id="pokemon">
     <div id="containerFilter">
@@ -25,9 +26,7 @@ const template = () => `
 
 const dataService = async () => {
   const getData = await dataPokemon();
-
   const { pokemonData, type } = getData;
-
   CardsPokemons(pokemonData);
   document.getElementById("spinner").innerHTML = "";
   PrintButton(type);
@@ -38,7 +37,6 @@ const dataService = async () => {
 
 const addListeners = () => {
   // EVENT TO INPUT
-
   const inputPokemon = document.getElementById("inputPokemon");
   inputPokemon.addEventListener("input", (e) => {
     filterPokemon(e.target.value, "name");

@@ -6,6 +6,7 @@
   & footer {
     height: 10vh;
     display: flex;
+    background: white;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 8px 30px -3px;
