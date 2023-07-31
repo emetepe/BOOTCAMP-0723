@@ -2,7 +2,7 @@
 /* For this problem you must create a program that says who ate the last cookie. If the input is a string then "Zach" ate the cookie. If the input is a float or an int then "Monica" ate the cookie. If the input is anything else "the dog" ate the cookie. The way to return the statement is: "Who ate the last cookie? It was (name)!" 
 Ex: Input = "hi" --> Output = "Who ate the last cookie? It was Zach! (The reason you return Zach is because the input is a string)
 Note: Make sure you return the correct message with correct spaces and punctuation.*/
-    
+
 // const cookie = (x) => {
 //     const text = "Who ate the last cookie? It was"
 //     switch (typeof x) {
@@ -72,18 +72,19 @@ Get rid of them. Only the ending ones.
 -1050 -> -105
 Zero alone is fine, don't worry about it. Poor guy anyway*/
 
-const noBoringZeros = (n) => {
-    let num = n.toString();
-    let long = num.length;
-    
-    for (let i; i <=long; i++) {
-        num[long] == 0 && num.substring(0,long-1);
-    }
-} 
+// const noBoringZeros = (n) => {
+//   if (n == 0) return n;
+//   else {
+//     for (i = 1; n % 10 == 0; i++) {
+//       n /= 10;
+//     }
+//     return n;
+//   }
+// };
 
-console.log(noBoringZeros(1450))
-// console.log(noBoringZeros(960000))
-// console.log(noBoringZeros(1050))
-// console.log(noBoringZeros(-1050))
-// console.log(noBoringZeros(-105))
-// console.log(noBoringZeros(0))
+// console.log(noBoringZeros(1450));
+// console.log(noBoringZeros(960000));
+// console.log(noBoringZeros(1050));
+// console.log(noBoringZeros(-1050));
+// console.log(noBoringZeros(-105));
+// console.log(noBoringZeros(0));
