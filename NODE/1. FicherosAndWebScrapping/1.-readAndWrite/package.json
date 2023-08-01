@@ -1,0 +1,14 @@
+{
+  "name": "1.-readandwrite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "write": "node write.js",
+  "read": "node read.js"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
