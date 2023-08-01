@@ -1,0 +1,12 @@
+<Catalog>
+   <Book id="bk101">
+      <autor>Garghentini, Davide</autor>
+      <titulo>XML Developer's Guide</titulo>
+      <genero>Computer</genero>
+   </Book>
+   <Book id="bk102">
+      <autor>Garcia, Debra</autor>
+      <titulo>Midnight Rain</titulo>
+      <genero>Fantasy</genero>
+   </Book>
+</Catalog>

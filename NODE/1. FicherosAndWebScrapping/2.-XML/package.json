@@ -1,0 +1,13 @@
+{
+  "name": "2.-xml",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "xml_write": "node write.js",
+    "xml_read": "node read.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
