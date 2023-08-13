@@ -1,7 +1,7 @@
-//! ---------- nos requerimos mongoose
+//! ---------- Requerimos mongoose
 const mongoose = require('mongoose');
 
-//! ---------- nos traemos de la libreria mongoose schema
+//! ---------- Traemos de la libreria mongoose schema
 const Schema = mongoose.Schema;
 
 //! ---------- creamos el schema
@@ -10,19 +10,20 @@ const Schema = mongoose.Schema;
 // ----------> Tenmos las diferentes claves con su TYPE
 // ----------> tenemos que definir las propiedades de los datos: limite de longuitud, si es requerido, si es unico...
 
-const CharacterSchema = new Schema(
+const DogSchema = new Schema(
   {
     name: { type: String, required: false, unique: true },
     gender: {
       type: String,
-      enum: ['hombre', 'mujer', 'otros'],
+      enum: ['Macho', 'Hembra'],
       required: false,
     },
+    age: { type: Number, required: false, unique: true },
     image: {
       type: String,
       required: false,
     },
-    movies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
+    breeds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Breed' }],
     userFav: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'User',
@@ -35,7 +36,7 @@ const CharacterSchema = new Schema(
 );
 //! ---------- creamos el modelo
 
-const Character = mongoose.model('Character', CharacterSchema);
+const Dog = mongoose.model('Dog', DogSchema);
 
 //! ----------- exportamos el modelo
-module.exports = Character;
+module.exports = Dog;

@@ -7,11 +7,16 @@ const mongoose = require('mongoose');
 // ----------> Tenmos las diferentes claves con su TYPE
 // ----------> tenemos que definir las propiedades de los datos: limite de longuitud, si es requerido, si es unico...
 
-const MovieSchema = new mongoose.Schema(
+const FeedBrandSchema = new mongoose.Schema(
   {
+    brand: { type: String, required: true, unique: true },
     name: { type: String, required: true, unique: true },
-    year: { type: Number, required: true },
-    characters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character' }],
+    type: {
+      type: String,
+      enum: ['dry', 'wet', 'raw'],
+      required: false,
+    },
+    breedsFav: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Breed' }],
     view: { type: Boolean, default: false },
     userFav: {
       type: [mongoose.Schema.Types.ObjectId],
@@ -25,7 +30,7 @@ const MovieSchema = new mongoose.Schema(
 );
 //! ---------- creamos el modelo
 
-const Movie = mongoose.model('Movie', MovieSchema);
+const FeedBrand = mongoose.model('FeedBrand', FeedBrandSchema);
 
 //! ----------- exportamos el modelo
-module.exports = Movie;
+module.exports = FeedBrand;

@@ -10,19 +10,27 @@ const Schema = mongoose.Schema;
 // ----------> Tenmos las diferentes claves con su TYPE
 // ----------> tenemos que definir las propiedades de los datos: limite de longuitud, si es requerido, si es unico...
 
-const CharacterSchema = new Schema(
+const BreedSchema = new Schema(
   {
     name: { type: String, required: false, unique: true },
-    gender: {
+    size: {
       type: String,
-      enum: ['hombre', 'mujer', 'otros'],
+      enum: ['Mini', 'Pequeño', 'Mediano', 'Grande', 'Gigante'],
+      required: false,
+    },
+    lifeExpectancy: { type: Number, required: false, unique: true },
+    weightAverage: { type: Number, required: false, unique: true },
+    origin: {
+      type: String,
+      enum: ['Europa', 'América', 'África', 'Asia', 'Oceanía', 'Antártida'],
       required: false,
     },
     image: {
       type: String,
       required: false,
     },
-    movies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
+    dogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dog' }],
+    // feedBrandFav: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Brand' }],
     userFav: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'User',
@@ -35,7 +43,7 @@ const CharacterSchema = new Schema(
 );
 //! ---------- creamos el modelo
 
-const Character = mongoose.model('Character', CharacterSchema);
+const Breed = mongoose.model('Breed', BreedSchema);
 
 //! ----------- exportamos el modelo
-module.exports = Character;
+module.exports = Breed;

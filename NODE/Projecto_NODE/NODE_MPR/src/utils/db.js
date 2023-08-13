@@ -1,6 +1,6 @@
 //! ------------------------- requerirnos dotenv - mongoose
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 //! --------------------------nos configuramos dotenv
 dotenv.config();
@@ -25,7 +25,7 @@ const connect = async () => {
       `Conectada la DB 👌  en el host: ${host} con el nombre: ${name}`
     );
   } catch (error) {
-    console.log("No se ha conectado la db 💔", error);
+    console.log('No se ha conectado la db 💔', error);
   }
 };
 
