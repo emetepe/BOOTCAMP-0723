@@ -14,7 +14,5 @@ DogRoutes.get('/:id', getById);
 DogRoutes.get('/', getAll);
 DogRoutes.get('/getByName/name', getByName);
 DogRoutes.patch('/update/:id', upload.single('image'), updateDog);
-//DogRoutes.delete('/delete/:id', deleteCharacter);
-//DogRoutes.patch('/error/:id', erroresSolve);
 
 module.exports = DogRoutes;

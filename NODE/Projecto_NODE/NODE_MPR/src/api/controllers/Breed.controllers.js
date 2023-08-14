@@ -168,24 +168,22 @@ const getByOrigin = async (req, res, next) => {
 };
 
 //! ---------------------------------------------------------------------
-//? ------------------------ Get highest expectancy ---------------------
+//? ------------------------ Get given lifeExpectancy -------------------
 //! ---------------------------------------------------------------------
-// const getHighestExpectancy = async (req, res) => {
-//   try {
-//     const { lifeExpectancy } = req.query;
-//     const highestBreed = await Breed.find({ lifeExpectancy });
+const getByExpectancy = async (req, res, next) => {
+  try {
+    const { lifeExpectancy } = req.query;
+    const breedByLifeExpectancy = await Breed.find({ lifeExpectancy });
 
-//     let max = highestBreed.reduce(function (a, b)) {
-//       return Math.max(a, b);
-//     }
-
-//     return res.status(200).json(highestBreed);
-//   } catch (error) {
-//     return res
-//       .status(404)
-//       .json('Error al obtener la raza con mayor esperanza de vida');
-//   }
-// };
+    if (breedByLifeExpectancy.length > 0) {
+      return res.status(200).json({ data: breedByLifeExpectancy });
+    } else {
+      res.status(404).json('breed not found');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
 
 //! ---------------------------------------------------------------------
 //? -------------------------------DELETE -------------------------------
@@ -283,6 +281,7 @@ module.exports = {
   getAll,
   getByName,
   getByOrigin,
+  getByExpectancy,
   //getHighestExpectancy,
   deleteBreed,
   erroresSolve,
