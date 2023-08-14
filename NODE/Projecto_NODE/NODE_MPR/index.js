@@ -20,15 +20,12 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: false }));
 
 //! --------------------- RUTAS---------------------------------
-//const CharacterRoutes = require('./src/api/routes/Character.routes');
 //const FeedBrandRoutes = require('./src/api/routes/FeedBrand.routes');
-const MovieRoutes = require('./src/api/routes/Movie.routes');
 const UserRoutes = require('./src/api/routes/User.routes');
 const DogRoutes = require('./src/api/routes/Dog.routes');
 const BreedRoutes = require('./src/api/routes/Breed.routes');
 
 app.use('/api/v1/dogs/', DogRoutes);
-app.use('/api/v1/movies/', MovieRoutes);
 app.use('/api/v1/users/', UserRoutes);
 app.use('/api/v1/breeds/', BreedRoutes);
 //app.use('/api/v1/feedbrand/', FeedBrandRoutes);
