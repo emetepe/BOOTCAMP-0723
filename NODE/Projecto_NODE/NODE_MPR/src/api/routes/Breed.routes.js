@@ -1,3 +1,4 @@
+const { isAuthAdmin } = require('../../middleware/auth.middleware');
 const { upload } = require('../../middleware/files.middleware');
 const {
   createBreed,
@@ -6,7 +7,6 @@ const {
   getByName,
   getByOrigin,
   getByExpectancy,
-  //getHighestExpectancy,
   deleteBreed,
 } = require('../controllers/Breed.controllers');
 
@@ -18,8 +18,7 @@ BreedRoutes.get('/', getAll);
 BreedRoutes.get('/getByName/name', getByName);
 BreedRoutes.get('/getByOrigin/origin', getByOrigin);
 BreedRoutes.get('/getByExpectancy/lifeExpectancy', getByExpectancy);
-//BreedRoutes.get('/getHighestExpectancy/', getHighestExpectancy);
-BreedRoutes.delete('/delete/:id', deleteBreed);
+BreedRoutes.delete('/delete/:id', [isAuthAdmin], deleteBreed);
 //BreedRoutes.patch('/error/:id', erroresSolve);
 
 module.exports = BreedRoutes;

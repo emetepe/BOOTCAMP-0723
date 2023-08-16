@@ -33,7 +33,7 @@ const UserSchema = new mongoose.Schema(
     },
     rol: {
       type: String,
-      enum: ['admin', 'user', 'superadmin'],
+      enum: ['admin', 'user'],
       default: 'user',
     },
     confirmationCode: {
@@ -47,9 +47,15 @@ const UserSchema = new mongoose.Schema(
     image: {
       type: String,
     },
-    dogsFav: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dog' }],
-    ownDogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dog' }],
-    breedsFav: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Breed' }],
+    dogsFav: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Dog', default: [] },
+    ],
+    ownDogs: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Dog', default: [] },
+    ],
+    breedsFav: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Breed', default: [] },
+    ],
   },
   {
     timestamps: true,
@@ -57,7 +63,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 //! --------- PRESAVE PARA ENCRYPTAR LA CONTRASEÑA
-
+// UserSchema.pre('save', function (next) {
 UserSchema.pre('save', async function (next) {
   try {
     this.password = await bcrypt.hash(this.password, 10);

@@ -11,11 +11,8 @@ const nodemailer = require('nodemailer');
 const { generateToken } = require('../../utils/token');
 const validator = require('validator');
 const randomPassword = require('../../utils/randomPassword');
-const Character = require('../models/Character.model');
-const Movie = require('../models/Movie.model');
 const Dog = require('../models/Dog.model');
 const Breed = require('../models/Breed.model');
-
 
 //! -----------------------------------------------------------------------------
 //? ----------------------------REGISTER CORTO EN CODIGO ------------------------
@@ -36,7 +33,6 @@ const register = async (req, res, next) => {
     const userExist = await User.findOne({ email: email }, { name: name });
 
     // condicionamos el codigo a que este usuario exista o no
-
     if (!userExist) {
       // istanciamos al modelo y creamos una nueva instancia del mismo
       const newUser = new User({ ...req.body, confirmationCode });
@@ -157,55 +153,9 @@ const registerSlow = async (req, res, next) => {
   }
 };
 
-//! -----------------------------------------------------------------------------
-//? ------------------REGISTER REDIRECT --------------------
-//! ----------------------------------------------------------------------------
-
-const registerWithRedirect = async (req, res, next) => {
-  let catchImg = req.file?.path;
-
-  try {
-    await User.syncIndexes();
-    let confirmationCode = randomCode();
-    const userExist = await User.findOne(
-      { email: req.body.email },
-      { name: req.body.name }
-    );
-    if (!userExist) {
-      const newUser = new User({ ...req.body, confirmationCode });
-      if (req.file) {
-        newUser.image = req.file.path;
-      } else {
-        newUser.image = 'https://pic.onlinewebfonts.com/svg/img_181369.png';
-      }
-
-      try {
-        const userSave = await newUser.save();
-
-        if (userSave) {
-          return res.redirect(
-            307,
-            `http://localhost:8081/api/v1/users/register/sendMail/${userSave._id}`
-          );
-        }
-      } catch (error) {
-        return res.status(404).json(error.message);
-      }
-    } else {
-      if (req.file) deleteImgCloudinary(catchImg);
-      return res.status(409).json('this user already exist');
-    }
-  } catch (error) {
-    if (req.file) {
-      deleteImgCloudinary(catchImg);
-    }
-    return next(error);
-  }
-};
-
-//! -----------------------------------------------------------------------------
-//? ------------------REDIRECT SEND CODE --------------------
-//! ----------------------------------------------------------------------------
+//! ---------------------------------------------------------------------------
+//? ------------------REDIRECT SEND CODE --------------------------------------
+//! ---------------------------------------------------------------------------
 const sendCode = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -226,7 +176,7 @@ const sendCode = async (req, res, next) => {
       from: emailEnv,
       to: userDB.email,
       subject: 'Confirmation code',
-      text: `tu codigo es ${userDB.confirmationCode}, gracias por confiar en nosotros ${userDB.name}`,
+      text: `Tu codigo es ${userDB.confirmationCode}, gracias por confiar en nosotros ${userDB.name}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -280,20 +230,20 @@ const login = async (req, res, next) => {
 const autoLogin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const userDb = await User.findOne({ email });
+    const userDB = await User.findOne({ email });
 
-    if (userDb) {
-      if (password === userDb.password) {
-        const token = generateToken(userDb._id, email);
+    if (userDB) {
+      if ((password, userDB.password)) {
+        const token = generateToken(userDB._id, email);
         return res.status(200).json({
-          user: userDb,
+          user: userDB,
           token,
         });
       } else {
         return res.status(404).json('password dont match');
       }
     } else {
-      return res.status(404).json('user not register');
+      return res.status(404).json('User no register');
     }
   } catch (error) {
     return next(error);
@@ -395,7 +345,7 @@ const changePassword = async (req, res, next) => {
     if (userDb) {
       return res.redirect(
         307,
-        `http://localhost:8081/api/v1/users/sendPassword/${userDb._id}`
+        `http://localhost:8080/api/v1/users/sendPassword/${userDb._id}`
       );
     } else {
       return res.status(404).json('User no register');
@@ -501,6 +451,26 @@ const modifyPassword = async (req, res, next) => {
   }
 };
 //! -----------------------------------------------------------------------------
+//? ------------------------------- Forgot Pass ---------------------------------
+//! -----------------------------------------------------------------------------
+const forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const userDb = await User.findOne({ email });
+    if (userDb) {
+      return res.redirect(
+        307,
+        `http://localhost:8080/api/v1/users/sendPassword/${userDb._id}`
+      );
+    } else {
+      return res.status(404).json('usuario no registrado');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//! -----------------------------------------------------------------------------
 //? ---------------------------------UPDATE--------------------------------------
 //! -----------------------------------------------------------------------------
 const update = async (req, res, next) => {
@@ -573,35 +543,35 @@ const update = async (req, res, next) => {
   }
 };
 //! -----------------------------------------------------------------------------
-//? ---------------------------------ADD FAV CHARACTER---------------------------
+//? --------------------------------- ADD FAV DOG -------------------------------
 //! -----------------------------------------------------------------------------
 
-const addFavCharacter = async (req, res, next) => {
+const addFavDog = async (req, res, next) => {
   try {
     const { _id } = req.user;
-    const { characters } = req.body;
-    const arrayCharacters = characters.split(',');
-    arrayCharacters.forEach(async (element) => {
-      if (req.user.charactersFav.includes(element)) {
+    const { dogs } = req.body;
+    const arrayDogs = dogs.split(',');
+    arrayDogs.forEach(async (element) => {
+      if (req.user.dogsFav.includes(element)) {
         // si lo incluye lo sacamos
         try {
           await User.findByIdAndUpdate(_id, {
-            $pull: { charactersFav: element },
+            $pull: { dogsFav: element },
           });
 
           try {
-            await Character.findByIdAndUpdate(element, {
+            await Dog.findByIdAndUpdate(element, {
               $pull: { userFav: _id },
             });
           } catch (error) {
             return res.status(404).json({
-              error: 'error updating pull id User in model character',
+              error: 'error updating pull id User in model dog',
               message: error.message,
             });
           }
         } catch (error) {
           return res.status(404).json({
-            error: 'error updating pull character',
+            error: 'error updating pull dog',
             element,
             message: error.message,
           });
@@ -610,21 +580,89 @@ const addFavCharacter = async (req, res, next) => {
         // si no lo incluye lo metemos
         try {
           await User.findByIdAndUpdate(_id, {
-            $push: { charactersFav: element },
+            $push: { dogsFav: element },
           });
           try {
-            await Character.findByIdAndUpdate(element, {
+            await Dog.findByIdAndUpdate(element, {
               $push: { userFav: _id },
             });
           } catch (error) {
             return res.status(404).json({
-              error: 'error updating push id User in model character',
+              error: 'error updating push id User in model dog',
               message: error.message,
             });
           }
         } catch (error) {
           return res.status(404).json({
-            error: 'error updating push character',
+            error: 'error updating push dog',
+            element,
+            message: error.message,
+          });
+        }
+      }
+    });
+
+    setTimeout(async () => {
+      return res.status(200).json(await User.findById(_id).populate('dogsFav'));
+    }, 100);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//! -----------------------------------------------------------------------------
+//? --------------------------------- ADD FAV BREED -----------------------------
+//! -----------------------------------------------------------------------------
+
+const addFavBreed = async (req, res, next) => {
+  try {
+    const { id } = req.user;
+    const { breeds } = req.body;
+    const arrayBreeds = breeds.split(',');
+    arrayBreeds.forEach(async (element) => {
+      if (req.user.breedsFav.includes(element)) {
+        // si lo incluye lo sacamos
+        try {
+          await User.findByIdAndUpdate(id, {
+            $pull: { breedsFav: element },
+          });
+
+          try {
+            await Breed.findByIdAndUpdate(element, {
+              $pull: { userFav: id },
+            });
+          } catch (error) {
+            return res.status(404).json({
+              error: 'error updating pull id User in model breed',
+              message: error.message,
+            });
+          }
+        } catch (error) {
+          return res.status(404).json({
+            error: 'error updating pull breed',
+            element,
+            message: error.message,
+          });
+        }
+      } else {
+        // si no lo incluye lo metemos
+        try {
+          await User.findByIdAndUpdate(id, {
+            $push: { breedsFav: element },
+          });
+          try {
+            await Breed.findByIdAndUpdate(element, {
+              $push: { userFav: id },
+            });
+          } catch (error) {
+            return res.status(404).json({
+              error: 'error updating push id User in model breed',
+              message: error.message,
+            });
+          }
+        } catch (error) {
+          return res.status(404).json({
+            error: 'error updating push breed',
             element,
             message: error.message,
           });
@@ -635,7 +673,7 @@ const addFavCharacter = async (req, res, next) => {
     setTimeout(async () => {
       return res
         .status(200)
-        .json(await User.findById(_id).populate('charactersFav'));
+        .json({ user: await User.findById(id).populate('breedsFav') });
     }, 100);
   } catch (error) {
     return next(error);
@@ -643,103 +681,84 @@ const addFavCharacter = async (req, res, next) => {
 };
 
 //! -----------------------------------------------------------------------------
-//? ---------------------------------ADD FAV MOVIE---------------------------
+//? ----------------------------- User Top Fav ----------------------------------
 //! -----------------------------------------------------------------------------
-
-const addFavMovie = async (req, res, next) => {
+const userTopFav = async (req, res) => {
   try {
-    const { _id } = req.user;
-    const { movies } = req.body;
-    const arrayMovies = movies.split(',');
-    arrayMovies.forEach(async (element) => {
-      if (req.user.moviesFav.includes(element)) {
-        // si lo incluye lo sacamos
-        try {
-          await User.findByIdAndUpdate(_id, {
-            $pull: { moviesFav: element },
-          });
-
-          try {
-            await Movie.findByIdAndUpdate(element, {
-              $pull: { userFav: _id },
-            });
-          } catch (error) {
-            return res.status(404).json({
-              error: 'error updating pull id User in model movie',
-              message: error.message,
-            });
-          }
-        } catch (error) {
-          return res.status(404).json({
-            error: 'error updating pull movie',
-            element,
-            message: error.message,
-          });
-        }
-      } else {
-        // si no lo incluye lo metemos
-        try {
-          await User.findByIdAndUpdate(_id, {
-            $push: { moviesFav: element },
-          });
-          try {
-            await Movie.findByIdAndUpdate(element, {
-              $push: { userFav: _id },
-            });
-          } catch (error) {
-            return res.status(404).json({
-              error: 'error updating push id User in model movie',
-              message: error.message,
-            });
-          }
-        } catch (error) {
-          return res.status(404).json({
-            error: 'error updating push movie',
-            element,
-            message: error.message,
-          });
-        }
-      }
-    });
-
-    setTimeout(async () => {
-      return res
-        .status(200)
-        .json({ user: await User.findById(_id).populate('moviesFav') });
-    }, 100);
+    const users = await User.find();
+    users.sort((a, b) => b.breedsFav.length - a.breedsFav.length);
+    const userTopFav = users.slice(0, 3);
+    return res.status(200).json(userTopFav);
   } catch (error) {
-    return next(error);
+    return res
+      .status(400)
+      .json('Error al sacar los tres usuarios con más favoritos');
   }
 };
 
 //! -----------------------------------------------------------------------------
-//? ---------------------------------DELETE--------------------------------------
+//? ----------------------------- DELETE USER -----------------------------------
 //! -----------------------------------------------------------------------------
-
 const deleteUser = async (req, res, next) => {
   try {
-    const { _id } = req.user;
+    const { _id, image } = req.user;
     await User.findByIdAndDelete(_id);
+    //
     try {
-      await Movie.updateMany({ userFav: _id }, { $pull: { userFav: _id } });
+      await Dog.updateMany({ dogsFav: _id }, { $pull: { dogsFav: _id } });
       try {
-        await Character.updateMany(
-          { userFav: _id },
-          { $pull: { userFav: _id } }
+        await Breed.updateMany(
+          { breedsFav: _id },
+          { $pull: { breedsFav: _id } }
         );
-
-        return res
-          .status(404)
-          .json({ testOkDelete: (await User.findById(_id)) ? false : true });
       } catch (error) {
         return res
-          .status(404)
-          .json('error deleting in Character model', error.message);
+          .status(400)
+          .json('Error al borrar la raza mientras se borra el usuario');
       }
     } catch (error) {
       return res
-        .status(404)
-        .json('error deleting in movie model', error.message);
+        .status(400)
+        .json('Error al borrar los perros mientras se borra el usuario');
+    }
+    //
+    if (await User.findById(_id)) {
+      return res.status(404).json('Not deleted');
+    } else {
+      deleteImgCloudinary(image);
+      return res.status(200).json('Deleted');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//! -----------------------------------------------------------------------------
+//? ----------------------------- Get All Users ---------------------------------
+//! -----------------------------------------------------------------------------
+const getAllUsers = async (req, res, next) => {
+  try {
+    const allUser = await User.find({ rol: 'user' });
+    if (allUser) {
+      return res.status(200).json(allUser);
+    } else {
+      return res.status(404).json('Error al buscar usuarios');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//! -----------------------------------------------------------------------------
+//? ----------------------------- Get All Admins ---------------------------------
+//! -----------------------------------------------------------------------------
+const getAllAdmins = async (req, res, next) => {
+  try {
+    const allAdmin = await User.find({ rol: 'admin' });
+    if (allAdmin) {
+      return res.status(200).json(allAdmin);
+    } else {
+      return res.status(404).json('Error al buscar administradores');
     }
   } catch (error) {
     return next(error);
@@ -751,7 +770,6 @@ const deleteUser = async (req, res, next) => {
 module.exports = {
   register,
   registerSlow,
-  registerWithRedirect,
   sendCode,
   login,
   autoLogin,
@@ -760,8 +778,12 @@ module.exports = {
   changePassword,
   sendPassword,
   modifyPassword,
+  forgotPassword,
   update,
-  addFavCharacter,
-  addFavMovie,
+  addFavDog,
+  addFavBreed,
   deleteUser,
+  getAllUsers,
+  getAllAdmins,
+  userTopFav,
 };

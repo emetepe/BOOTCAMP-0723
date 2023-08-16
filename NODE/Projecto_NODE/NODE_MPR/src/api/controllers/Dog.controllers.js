@@ -3,7 +3,6 @@ const User = require('../models/User.model');
 const Breed = require('../models/Breed.model');
 const { deleteImgCloudinary } = require('../../middleware/files.middleware');
 
-
 //! -------------------------------------------------------------------------
 //? -------------------------------POST Create ------------------------------
 //! -------------------------------------------------------------------------
@@ -163,10 +162,42 @@ const updateDog = async (req, res, next) => {
   }
 };
 
+//! Obtener los perros que pesen menos que el peso introducido
+const weightDog = async (req, res) => {
+  try {
+    const dogs = await Dog.find();
+    const dogsByWeight = dogs.filter(
+      (item) => item.weight <= Number(req.params.weight)
+    );
+    // Sort by weigth
+    dogsByWeight.sort((a, b) => a.weight - b.weight);
+    return res.status(200).json(dogsByWeight);
+  } catch (error) {
+    return res.status(400).json('Error al obtener el perror con mayor peso');
+  }
+};
+
+//! Obtener los perros que sean mayores que determinado año
+const ageDog = async (req, res) => {
+  try {
+    const dogs = await Dog.find();
+    const dogsByYobt = dogs.filter(
+      (item) => item.yearOfBirth >= Number(req.params.yearOfBirth)
+    );
+    // Sort by year
+    dogsByYobt.sort((a, b) => a.yearOfBirth - b.yearOfBirth);
+    return res.status(200).json(dogsByYobt);
+  } catch (error) {
+    return res.status(400).json('Error al obtener el perror menos joven');
+  }
+};
+
 module.exports = {
   createDog,
   getById,
   getAll,
   getByName,
   updateDog,
+  weightDog,
+  ageDog,
 };

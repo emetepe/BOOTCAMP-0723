@@ -11,7 +11,7 @@
     "format": "prettier --check --ignore-path .gitignore ./src  ./index.js ",
     "format:fix": "prettier --write --ignore-path .gitignore ./src ./index.js   "
   },
-  "keywords": [],
+  "keywords": ["node", "express", "controllers", "middleware", "user"],
   "author": "Marta Pérez Romero",
   "license": "ISC",
   "dependencies": {

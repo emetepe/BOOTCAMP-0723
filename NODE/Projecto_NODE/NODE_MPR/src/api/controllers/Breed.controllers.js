@@ -282,7 +282,6 @@ module.exports = {
   getByName,
   getByOrigin,
   getByExpectancy,
-  //getHighestExpectancy,
   deleteBreed,
   erroresSolve,
 };

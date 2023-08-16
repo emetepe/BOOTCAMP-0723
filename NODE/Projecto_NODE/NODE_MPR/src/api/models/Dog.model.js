@@ -18,7 +18,8 @@ const DogSchema = new Schema(
       enum: ['Macho', 'Hembra'],
       required: false,
     },
-    age: { type: Number, required: false, unique: true },
+    yearOfBirth: { type: Number, required: false, unique: false },
+    weight: { type: Number, required: false, unique: false },
     image: {
       type: String,
       required: false,
