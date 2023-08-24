@@ -4,6 +4,8 @@ import "./App.css";
 const App = () => {
   /* Apartado 2 - Usamos useState para controlar los estados */
   const [time, setTime] = useState(0);
+  const [count, setCount] = useState(0);
+  const [color, setColor] = useState(0);
   /* Apartados 3 y 4 - Declaramos un array para recorrerlo después */
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
   const listNumbers = numbers.map((numbers) => <li key={numbers.toString()}>{numbers}</li>);
@@ -23,6 +25,14 @@ const App = () => {
       </div>
       {/* Apartados 3 y 4 - Recorremos los elementos de un array y los renderizamos */}
       <ul>{listNumbers}</ul>
+      
+      <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+      {/* Apartado 5 - Renderizamos según el condicional múltiple */}
+      <p>
+      <button onClick={()=>{setColor(true)}} style={{backgroundColor:color==true?"black":color==false?"white":""}}></button>
+      </p>
 
     </>
   );
