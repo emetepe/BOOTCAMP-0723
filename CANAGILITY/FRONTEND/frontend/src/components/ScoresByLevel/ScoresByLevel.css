@@ -1,0 +1,49 @@
+.pruebaspornivel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.pruebaspornivel h1{
+    border: 5px solid #ff914d;
+	color: #ff914d;
+    border-radius: 15px;
+	text-align: center;
+	font-size: 100;
+    font-weight: bold;
+	margin:2% 2% 2% 2%;
+    width: 60vw;
+    text-transform: uppercase;
+}
+
+select{
+    color: black;
+    width: 40vw;
+    height: 5vh;
+    text-align: center;
+    border: 2.5px solid #ff914d;
+	color: #ff914d;
+    font-weight: bold;
+    font-size: medium;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+tbody> tr > td.prueba{
+    background-color: #ff914d;
+}
+
+tbody> tr > td.score{
+    border: 3px solid #ff914d;
+}
+
+.prueba p{
+    color: white;
+}
+
+.score p{
+    color: #ff914d;
+    padding-top: 10px;
+}

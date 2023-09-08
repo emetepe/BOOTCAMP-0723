@@ -1,0 +1,103 @@
+import "./UploadFile.css";
+
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+
+const Uploadfile = ({ registerForm }) => {
+  const { register, handleSubmit } = useForm();
+  const ekUpload = () => {
+    const Init = () => {
+      var fileSelect = document.getElementById("file-upload");
+      fileSelect.addEventListener("change", fileSelectHandler, false);
+    };
+
+    const fileDragHover = (e) => {
+      let fileDrag = document.getElementById("file-drag");
+
+      e.stopPropagation();
+      e.preventDefault();
+
+      fileDrag.className =
+        e.type === "dragover" ? "hover" : "modal-body file-upload";
+    };
+
+    const fileSelectHandler = (e) => {
+      let files = e.target.files || e.dataTransfer.files;
+
+      // Cancela el evento cuando se suelta
+      fileDragHover(e);
+
+      // Procesa los objetos de tipo archivo
+      for (let i = 0, f; (f = files[i]); i++) {
+        parseFile(f);
+      }
+    };
+
+    // Salida
+    const output = (msg) => {
+      let m = document.getElementById("messages");
+      m.innerHTML = msg;
+    };
+
+    function parseFile(file) {
+      output("<strong>" + encodeURI(file.name) + "</strong>");
+      let imageName = file.name;
+
+      let isGood = /\.(?=gif|jpg|png|jpeg)/gi.test(imageName);
+      if (isGood) {
+        document.getElementById("start").classList.add("hidden");
+        document.getElementById("response").classList.remove("hidden");
+        document.getElementById("notimage").classList.add("hidden");
+        // Preview del archivo
+        document.getElementById("file-image").classList.remove("hidden");
+        document.getElementById("file-image").src = URL.createObjectURL(file);
+      } else {
+        document.getElementById("file-image").classList.add("hidden");
+        document.getElementById("notimage").classList.remove("hidden");
+        document.getElementById("start").classList.remove("hidden");
+        document.getElementById("response").classList.add("hidden");
+        document.getElementById("file-upload-form").reset();
+      }
+    }
+    if (window.File && window.FileList && window.FileReader) {
+      Init();
+    } else {
+      document.getElementById("file-drag").style.display = "none";
+    }
+  };
+
+  useEffect(() => {
+    ekUpload();
+  });
+
+  return (
+    <div id="file-upload-form" className="uploader">
+      <input
+        id="file-upload"
+        type="file"
+        name="image"
+        accept="image/*"
+        {...registerForm}
+      />
+
+      <label htmlFor="file-upload" id="file-drag">
+        <img id="file-image" src="#" alt="Preview" className="hidden" />
+        <div id="start">
+          <i className="fa fa-download" aria-hidden="true"></i>
+          <div className="divSelect">Selecciona o arrastra una imagen de tu mascota</div>
+          <div id="notimage" className="hidden">
+            Por favor, selecciona una imagen
+          </div>
+          <span id="file-upload-btn" className="btn btn-primary">
+            Selecciona un archivo
+          </span>
+        </div>
+        <div id="response" className="hidden">
+          <div id="messages"></div>
+        </div>
+      </label>
+    </div>
+  );
+};
+
+export default Uploadfile;

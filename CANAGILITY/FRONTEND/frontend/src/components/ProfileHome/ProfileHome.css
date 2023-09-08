@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+.fraseProfileHome{
+    background: #000;
+    padding: 15px 25px 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.saludoProfile{
+  background: #000;
+}
+

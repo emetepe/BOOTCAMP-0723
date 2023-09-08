@@ -1,0 +1,37 @@
+.scoreporprueba {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .scoreporprueba h1 {
+    border: 5px solid #ff914d;
+      color: #ff914d;
+    border-radius: 15px;
+      text-align: center;
+      font-size: 100;
+    font-weight: bold;
+      margin:2% 2% 2% 2%;
+    width: 60vw;
+    text-transform: uppercase;
+  }
+  
+  tbody> tr > td.prueba3{
+    background-color: #ff914d;
+  }
+  
+  tbody> tr > td.score3{
+    background-color: #ff914d;
+  }
+  
+  tbody> tr > td.score4{
+    border: 3px solid #ff914d;
+  }
+  
+  .prueba3, .score3, p{
+    color: white;
+  }
+  
+  .score4 p{
+    color: #ff914d;
+  }

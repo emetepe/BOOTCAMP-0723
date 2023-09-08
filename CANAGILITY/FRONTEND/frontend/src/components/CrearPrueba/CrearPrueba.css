@@ -1,0 +1,43 @@
+.crearprueba {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+  .crearprueba h1 {
+    border: 5px solid #ff914d;
+      color: #ff914d;
+    border-radius: 15px;
+      text-align: center;
+      font-size: 100;
+    font-weight: bold;
+      margin:2% 2% 2% 2%;
+    width: 60vw;
+    text-transform: uppercase;
+  }
+  
+  .name-container{
+    background: #ff914d;
+    padding: 15px 25px 30px;
+    border-radius: 5px;
+    margin: 20px;
+  }
+  
+  .crearprueba label{
+    color: #ff914d;
+    font-weight: normal;
+  }
+  
+  .input-prueba{
+    width: 100%;
+    padding: 10px;
+    border: #ddd 1px solid;
+    border-radius: 5px;
+    font-family: inherit;
+    caret-color: #ff914d;
+  }
+  
+  .input-prueba:focus{
+    outline-color: #ff914d;
+  }

@@ -1,0 +1,92 @@
+.crearscore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  h1.tituloCrearScore {
+    border: 5px solid #ff914d;
+      color: #ff914d;
+    border-radius: 15px;
+      text-align: center;
+      font-size: 100;
+    font-weight: bolder;
+      margin:2%;
+    width: 60vw;
+    text-transform: uppercase;
+  }
+  
+  .carta img{
+    width: 100px;
+    border-radius: 50px;
+    border: 3px solid black;
+  }
+  
+  .name-container1{
+    border: 3px solid #ff914d;
+    width: 15vw;
+    padding: 15px 25px 30px;
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .crearscore label{
+    color: #ff914d;
+    font-weight: normal;
+  }
+  
+  .carta{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+  }
+  .negro{
+    margin-top: 20px;
+  }
+  .carrusel{
+    margin-top: 20px;
+  }
+  
+  .div-crearScore{
+    color: #001d86;
+    font-weight: bolder;
+  }
+  
+  .input-score{
+    width: 30%;
+    padding: 10px;
+    border: #ddd 1px solid;
+    border-radius: 5px;
+    font-family: inherit;
+    caret-color: #ff914d;
+  }
+  
+  .input-score:focus{
+    outline-color: #ff914d;
+  }
+  
+  .form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .div-crearScore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    background-color: #ff914d;
+    border-radius: 20px;
+    padding: 2rem 5rem;
+  }

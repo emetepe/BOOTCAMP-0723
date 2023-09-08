@@ -1,0 +1,44 @@
+.scoresactual{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.scoresactual h1{
+    border: 5px solid #ff914d;
+	color: #ff914d;
+    border-radius: 15px;
+	text-align: center;
+	font-size: 100;
+    font-weight: bold;
+	margin:2% 2% 2% 2%;
+    width: 60vw;
+    text-transform: uppercase;
+}
+
+tbody> tr > td{
+    width: 10rem;
+}
+
+tbody> tr > td.prueba{
+    background-color: #ff914d;
+}
+
+tbody> tr > td.temporada{
+    background-color: #ff914d;
+}
+
+tbody> tr > td.prueba{
+    border: 3px solid #ff914d;
+}
+
+.prueba, .nivel, p{
+    color: white;
+    padding-top: 7.5px;
+}
+
+.prueba p{
+    color: #ff914d;
+    padding-top: 8px;
+}

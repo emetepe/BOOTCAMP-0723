@@ -1,0 +1,50 @@
+.borrarScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .borrarScore h1 {
+    border: 5px solid #ff914d;
+      color: #ff914d;
+    border-radius: 15px;
+      text-align: center;
+      font-size: 100;
+    font-weight: bold;
+      margin:2% 2% 2% 2%;
+    width: 60vw;
+    text-transform: uppercase;
+  }
+  .h2BorrarScore{
+    color: black;
+  }
+  
+  .buttonBorrarScore{
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 40px;
+    font-weight: normal;
+    font-size: medium;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #ff914d;
+  }
+  
+  .buttonBorrarScore:focus,
+  .buttonBorrarScore:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+  .div-borrarScore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+    background-color: #ff914d;
+    border-radius: 20px;
+    padding: 2rem;
+  }

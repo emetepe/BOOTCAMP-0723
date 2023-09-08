@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  line-height: 1.8;
+}
+
+.fondoRegister{
+  color: black !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.parrafoLogin {
+  margin-bottom: 40px;
+}
+
+#imagen {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bolder;
+}
+
+#container {
+  margin: 30px auto;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.form-wrap {
+  margin-top: 2rem;
+  background: #000000;
+  padding: 15px 25px 30px;
+  color: #d9d9d9;
+  border-radius: 5px;
+}
+
+.form-wrap h1,
+.form-wrap p {
+  text-align: center;
+  color: #d9d9d9;
+  font-weight: bolder;
+}
+
+.form-wrap .form-group {
+  margin-top: 15px;
+}
+
+.form-wrap .form-group label {
+  color: #d9d9d9;
+  font-weight: normal;
+}
+
+.form-wrap .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: #ddd 1px solid;
+  border-radius: 5px;
+  font-family: inherit;
+  caret-color: #ff914d;
+}
+
+.form-wrap .form-group input:focus {
+  outline-color: #ff914d;
+}
+
+.form-wrap .btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 25px;
+  background: #ff914d;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.form-wrap .btn:hover {
+  background-color: #ff914d;
+  color: #f4f4f4;
+}
+
+.form-wrap .btn:focus {
+  outline-color: #ff914d;
+}
+
+.form-wrap .bottom-text {
+  line-height: 1.4;
+  margin-top: 15px;
+}
+
+.form-wrap .bottom-text a:hover {
+  text-decoration: underline;
+  color: #ff914d !important;
+}
+
+.parrafoLogin {
+  text-align: center;
+  margin-top: 15px;
+  color: #ff914d;
+}
+
+footer a {
+  color: #49c1a2;
+}
+
+footer a:hover {
+  color: #37a08e;
+}
+
+.btn:disabled {
+  background-color: navajowhite;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.sexo {
+  display: flex;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sexo .masculino {
+  border-radius: 3px 0 0 3px;
+  color: white !important;
+
+}
+.sexo .femenino {
+  border-radius: 0 3px 3px 0;
+  color: white !important;
+ 
+}
+
+.label-radio {
+  background: #ff914d;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  width: 49.5%;
+}
+
+input[type="radio"]:checked + .label-radio {
+  background: #ff914d;
+  color: #fff !important;
+}
+
+
+
+a:hover{
+  color: #ff914d;
+  text-decoration: underline;
+
+}
+
+.anchorCustom {
+  color:#ff914d;
+}
+.btn{
+  background: #ff914d;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  
+  cursor: pointer;
+  transition: border-color 0.25s;
+  
+}
+.btn:hover {
+  background-color: #ff914d;
+}
+.btn:focus,
+.btn:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}  

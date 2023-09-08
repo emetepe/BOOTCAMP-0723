@@ -1,0 +1,41 @@
+.monitores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .monitores h1 {
+    border: 5px solid #ff914d;
+      color: #ff914d;
+    border-radius: 15px;
+      text-align: center;
+      font-size: 100;
+    font-weight: bold;
+      margin:2% 2% 2% 2%;
+    width: 60vw;
+    text-transform: uppercase;
+  }
+  
+  tbody> tr > td{
+    width: 10rem;
+  }
+  
+  tbody> tr > td.nombre{
+    background-color: #ff914d;
+  }
+  
+  tbody> tr > td.prueba{
+    background-color: #ff914d;
+  }
+  
+  tbody> tr > td.nivel{
+    border: 3px solid #ff914d;
+  }
+  
+  .nombre, .prueba, p{
+    color: white;
+  }
+  
+  .nivel p{
+    color: #ff914d;
+  }

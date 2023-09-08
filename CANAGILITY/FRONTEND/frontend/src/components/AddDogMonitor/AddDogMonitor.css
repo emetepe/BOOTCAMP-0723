@@ -1,0 +1,44 @@
+.añadirdogcoach {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .añadirdogcoach h1 {
+    border: 5px solid #ff914d;
+      color: #ff914d;
+    border-radius: 15px;
+      text-align: center;
+      font-size: 100;
+    font-weight: bold;
+      margin:2% 2% 2% 2%;
+    text-transform: uppercase;
+    width: 55vw;
+  }
+  .cardPrueba{
+    border: solid 2px #ff914d;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }
+  .wrapPrueba{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  
+  }
+  .color{
+    color: #ff914d;
+  }
+  
+  .cardPrueba:hover{
+    cursor: pointer;
+    background-color: #ff914d;
+    /* color: white; */
+    .color{
+      color: white;
+    }
+  }
